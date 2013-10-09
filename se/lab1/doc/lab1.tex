@@ -1,0 +1,122 @@
+\documentclass{article}
+
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{verbatim}
+\usepackage{algpseudocode}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{amssymb}
+%\setcounter{MaxMatrixCols}{16}
+
+
+\begin{document}
+\title{Report Lab 1}
+\date {\today}
+\author{Tatiana Lopez Guevara}
+\maketitle
+
+
+\section{Variables}
+\subsection{Local vs Global}
+A global variable can be accessed from any part of the program and will 
+be alive during the execution of the whole program.
+A local variable is only accessible inside the scope its 
+declared and will be alive during the execution of the function or scope it lives in.
+
+The section \ref{sec:fibo} shows the use of the global variable $\varphi$ that holds 
+the known value of the golden ratio. Inside the function \verb|golden_ratio| 
+the value $err$ is a local variable which is only accessible inside that function.
+
+\subsection{Elementary functions}
+In this section I created the functions \verb|mean, min, max| which received 2 
+integer parameters. In this case the input variables do not need to be modified
+and therefore I learned how to help a little bit the compiler by explicitly 
+specifying the read only property with \verb+ const + keyword and also by not 
+creating a copy by passing it a reference with \verb+ & +. 
+
+\section{Combination}
+\subsection{Factorial}
+In this function we noticed 2 things besides the optimizations mentioned 
+int the previous section:
+\begin{itemize}
+\item The Fibonacci is only defined for values in $\mathbb{N}^0$ and therefore
+is better to declare it as unsigned. Due to the extremely fast growing of the
+factorial function we declared the type as \verb+short+.
+\item The return type must be able to hold a very large number. At the begining
+we declared it as \verb+long long+ but then we realized that it overflowed with
+the factorial of numbers greater than 21 and therefore we had to change it to
+\verb+double+.
+\end{itemize}
+
+\subsection{Combinations}
+In order to follow the KISS phylosphy, I just reused the 
+\verb+factorial+ function created in the previous step to calculate $n!, k!$
+and $(n-k)!$ used in the formula.
+
+The number of combinations of a lottery game is $C^{49}_{6}$ and 
+the program gave the result 1.39838e+07.
+
+\subsection{Combinations with repetitions}
+Same as before. I just reused the \verb+combinations+ function to get
+the term:
+\begin{equation*}
+\binom{n+k-1}{k}
+\end{equation*} 
+
+\subsection{Permutations}
+In this function I reused the two previous functions to 
+get the value $P_5^{54} = 3.79501e+08$ from
+the formula:
+
+\begin{equation*}
+P_k^n = \frac{n!}{(n-k)!} 
+\end{equation*} 
+
+
+\section{Fibonacci}
+\label{sec:fibo}
+The Fibonacci function has a recursive definition, however the implementation
+realized here was not, first because for printing each one of the terms it was 
+more easy and second because it is faster.
+
+\subsection{Golden Ratio}
+
+\section{Pascal's Triangle}
+One of the most simple and effective ways to print the Pascal's triangle
+is using arrays to calculate the current value only through sums and
+based only on 2 previous factos. 
+However, this was implemented for Lab2 and here I just used
+another simple approach by just reusing the \verb+combinations+ function
+for each calculation.
+
+\section{Other things}
+\subsection{String}
+I used 5 ways to create strings: the default constructor, passing a string,
+assigning a value with the \verb+ = + operator, and repeating a character 
+constructor \cite{cpp}. 
+The empty string was then assigned to the concatenated value of
+the first 2 strings using the \verb|+| operator. The last string was
+used to play with the \verb+append+ and \verb+insert+ functions. 
+All values were shown in the output ussing the \verb+<<+ operator and
+\verb+c_str()+ 
+
+\subsection{Main}
+The parameters of the main are used for accessing the information
+of the parameters passed into the program on the invocation.
+More specifically, \verb+argc+ is the number of parameters passed 
+where the 1st one is the program invocation by itself.
+\verb+argv+ is a vector of \verb+argc+ possitions, each one corresponding
+to the value of the parameters for the program.
+
+\bibliographystyle{plainnat}
+\bibliography{biblio}
+
+\end{document}
