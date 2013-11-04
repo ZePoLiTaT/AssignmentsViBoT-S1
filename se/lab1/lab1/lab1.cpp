@@ -1,6 +1,7 @@
 #include "lab1.h"
 #include <iostream>
 #include <string>
+#include <stdio.h>
 
 using namespace std;
 
@@ -12,7 +13,7 @@ using namespace std;
  */
 double mean(const double &val1, const double &val2)
 {
-    return (val1 + val2)/2;
+    return (val1 + val2)*0.5;
 }
 
 /**
@@ -138,15 +139,15 @@ unsigned long long fibonacci(const unsigned short &n)
  * until its error is less than an epsilon
  * @param eps is the epsilon of the max allowed error
  */
-void golden_ratio(const float &eps)
+int golden_ratio(const double &eps)
 {
     unsigned int i=1;
-    float err = 1e10, r;
+    double err = 1e10, r;
     unsigned long long fnp1=1, fn=1, tmp;
 
     do
     {
-        r = (float)fnp1/fn;
+        r = (double)fnp1/fn;
         err = abs(r - PHI);
         printf("Ratio Fn(%llu)/Fn(%llu) = %G. Err{%G} vs eps{%E}\n", fnp1, fn, r, err,eps);
 
@@ -156,6 +157,8 @@ void golden_ratio(const float &eps)
 
         i++;
     }while(err>eps);
+
+    return i;
 }
 
 

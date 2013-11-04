@@ -21,7 +21,7 @@ double permutations(const unsigned short &n, const unsigned short &k);
 
 void fibonacci_print(const unsigned short &n);
 
-void golden_ratio(const float &eps);
+int golden_ratio(const double &eps);
 
 void pascalTriangle(const unsigned short &n);
 

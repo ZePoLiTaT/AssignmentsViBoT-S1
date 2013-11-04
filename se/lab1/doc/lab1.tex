@@ -42,6 +42,9 @@ and therefore I learned how to help a little bit the compiler by explicitly
 specifying the read only property with \verb+ const + keyword and also by not 
 creating a copy by passing it a reference with \verb+ & +. 
 
+Also, in the function \verb+mean+ instead of dividing by 2, a multiplication
+for 0.5 was used because it uses less clock cycles in the execution.
+
 \section{Combination}
 \subsection{Factorial}
 In this function we noticed 2 things besides the optimizations mentioned 
@@ -88,6 +91,18 @@ realized here was not, first because for printing each one of the terms it was
 more easy and second because it is faster.
 
 \subsection{Golden Ratio}
+The same logic of the previous section was implemented in this function and the
+ratio between the current value and the previous value was calculated and printed
+at each step. When the variable of the error and the rate was declared as \verb+float+
+the loop went to an infinite cycle because of precision \cite{yohan1} when calculating it with
+the $\epsilon = 10^{-9}$. The results obtained with the \verb+double+ declaration where:
+
+\begin{itemize}
+\item $\epsilon=10^{-6}$ stopped with $F_{16}=987$ and $F_{17}=1597$. 
+\item $\epsilon=10^{-9}$ stopped with $F_{23}=28657$ and $F_{24}=46368$. 
+\item $\epsilon=10^{-12}$ stopped with $F_{30}=832040$ and $F_{31}=1346269$. 
+\item $\epsilon=10^{-15}$ stopped with $F_{37}=24157817$ and $F_{38}=39088169$. 
+\end{itemize} 
 
 \section{Pascal's Triangle}
 One of the most simple and effective ways to print the Pascal's triangle
@@ -116,7 +131,10 @@ where the 1st one is the program invocation by itself.
 \verb+argv+ is a vector of \verb+argc+ possitions, each one corresponding
 to the value of the parameters for the program.
 
-\bibliographystyle{plainnat}
+To illustrate this, at the begining of the \verb+main+, I reused the proposed
+code in the last point of the lab.
+
+\bibliographystyle{plain}
 \bibliography{biblio}
 
 \end{document}

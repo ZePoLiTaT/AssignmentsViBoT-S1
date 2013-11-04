@@ -1,0 +1,66 @@
+\documentclass{article}
+
+\input{headers/header}
+
+
+\begin{document}
+\title{Report Homework 3}
+\date {\today}
+\author{Tatiana Lopez Guevara}
+\maketitle
+
+\section{Problem 1}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[fill=blue,draw=none,text=black,opacity=.4]
+\node[state]		 (A)             {$g_1$};
+\tikzstyle{every state}=[fill=red,draw=none,text=black,opacity=.4]
+\node[state]         (B) [right of=A] {$g_2$};
+
+\path 
+(A) edge [loop above] node        {$0.8$} (A) 
+    edge [bend left ] node[above] {$0.2$} (B)
+(B) edge [loop above] node        {$0.7$} (B)
+	edge [bend left ] node[below] {$0.3$} (A);
+\end{tikzpicture}
+
+\begin{equation*}
+\left(
+\begin{array}{c}
+g_1\\ 
+g_2
+\end{array}
+\right)_1 
+=
+\begin{pmatrix}
+ 0,7 & 0.2\\
+ 0.3 & 0.8
+ \end{pmatrix}
+\left(
+\begin{array}{c}
+g_1\\ 
+g_2
+\end{array}
+\right)_0
+\end{equation*} 
+
+\tikzset{node style ge/.style={circle}}
+\begin{tikzpicture}
+% les matrices
+\tikzset{BarreStyle/.style =   {opacity=.4,line width=7mm,line cap=round,color=#1}}
+\matrix (M)  [	matrix of math nodes, 
+				nodes = {node style ge},,
+				column sep=0 mm,
+				left delimiter  = (,%
+				right delimiter = )]
+{ 0,7 & 0.2 \\
+  0.3 & 0.8 \\
+};
+\draw [BarreStyle=red] (M-1-1.north) to (M-2-1.south);
+\draw [BarreStyle=blue]  (M-1-2.north) to (M-2-2.south);
+\end{tikzpicture}
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}
