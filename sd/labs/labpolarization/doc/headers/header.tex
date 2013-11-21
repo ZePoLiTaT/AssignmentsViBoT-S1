@@ -1,0 +1,109 @@
+
+ % Required for inserting code snippets
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{verbatim}
+\usepackage{algpseudocode}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{amssymb}
+%\setcounter{MaxMatrixCols}{16}
+
+\usepackage{caption}
+
+%%%%%%%%%%%%%%%%%%%%%%%% PAINTING LIBRARY
+\usepackage{tikz}
+\usetikzlibrary{positioning,shadows,backgrounds}
+
+%%%%%%%%%%%%%%%%%%%%%%%% THNX TO OZAN FOR THE CODE HEADER ;)
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{courier}
+\definecolor{DarkGray}{rgb}{0.43,0.35,0.35} % Comment color
+\lstset{
+	language=C++,								% choose the language of the code
+		basicstyle=\footnotesize\ttfamily,  % the size of the fonts that are used for the code
+		numbers= left,						% where to put the line-numbers
+		numberstyle=\tiny,					% the size of the fonts that are used for the line-numbers
+		stepnumber=1,						% the step between two line-numbers. If it is 1 each line will be numbered
+		numbersep=10pt,						% how far the line-numbers are from the code
+		backgroundcolor=\color{white},		% choose the background color. You must add \usepackage{color}
+		keywordstyle=\color{DarkGray}\bf,
+	showspaces=false,						% show spaces adding particular underscores
+		showstringspaces=false,				% underline spaces within strings
+		showtabs=false,						% show tabs within strings adding particular underscores
+		keywordstyle=\color{DarkGray}\bf,
+		stringstyle=\color[rgb]{0.627,0.126,0.941},
+		xleftmargin=17pt,
+		framexleftmargin=17pt,
+		framexrightmargin=5pt,
+		framexbottommargin=4pt,
+		%frame=b,         
+		frame=single,					% adds a frame around the code
+		tabsize=2,						% sets default tabsize to 2 spaces
+		captionpos=t,					% sets the caption-position to bottom (t=top, b=bottom)
+		breaklines=true,				% sets automatic line breaking
+		breakatwhitespace=false,		% sets if automatic breaks should only happen at whitespace
+		escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}
+{
+	\colorbox[rgb]{0.83, 0.85, 0.88}
+	{\parbox{\dimexpr\textwidth-8\fboxsep\relax}{#1#2#3}}
+}
+
+\captionsetup[lstlisting]
+{
+	format=listing,
+		labelfont=white,
+		textfont=white, 
+		singlelinecheck=false, 
+		margin=0pt, 
+		font={bf,footnotesize}
+}
+
+%\usepackage{textcomp}
+
+%%%%%%%%%%%%% WATERMARKS  %%%%%%%%%%%%%%%%%
+%\usepackage{eso-pic}
+%\AddToShipoutPicture{
+%    \includegraphics[width=1.74\textwidth,natwidth=1223,natheight=121]{figs/lowImg2.png}}
+
+%\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+
+%%%%%%%%%%%%% PARAGRAPHS %%%%%%%%%%%%%%%%%
+%No ident in new paragraph
+%\usepackage[parfill]{parskip}
+%% Add a space of 1.5 lines between paragraphs
+%\parskip=1.1\baselineskip
+
+%%%%%%%%%%%%% DEFAULT FONT %%%%%%%%%%%%%%%
+%Sans-serif font by default
+%\renewcommand{\familydefault}{\sfdefault}
+%\usepackage{mathptmx}
+
+%\usepackage{bookman}
+%%%%%\usepackage[default]{droidserif}
+%\usepackage[T1]{fontenc}
+%\usepackage{lxfonts}
+%\usepackage{tgadventor}
+%\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+%\usepackage[T1]{fontenc}
+
+
+%\newcommand{\specialcell}[2][c]{%
+%  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\usepackage{wrapfig}
+
+\usepackage{float}
