@@ -3,20 +3,19 @@
 #include <stdlib.h>
 #include <iostream>
 
-
-
 using namespace std;
-/*
-CTable::CTable() : CTable(DEFVAL)
-{
-
-}*/
 
 CTable::CTable(unsigned const int &ne)
 {
     n = ne;
     elems = new int[n];
     initialize();
+}
+
+CTable::~CTable()
+{
+    if(elems!=NULL)
+        delete [] elems;
 }
 
 void CTable::initialize()
@@ -27,20 +26,21 @@ void CTable::initialize()
 
 void CTable::display()
 {
-    for(unsigned int i=0; i<n; i++)
-        cout<<elems[i]<<" ";
-    cout<<endl;
+    cout<<*this;
 }
 
-void CTable::insert(const unsigned int &idx, int &val)
+void CTable::insert(const unsigned int old_idx, const unsigned int new_idx)
 {
-    if(idx>=this->n)
+    if(old_idx < new_idx)
         return;
 
-    elems[idx] = val;
+    int val = elems[old_idx];
+    for(unsigned int i=old_idx; i>new_idx; i--)
+        elems[i] = elems[i-1];
+    elems[new_idx] = val;
 }
 
-int CTable::read(const unsigned int &idx)
+int CTable::read(const unsigned int idx)
 {
     if(idx>=this->n)
         return -1;
@@ -48,7 +48,7 @@ int CTable::read(const unsigned int &idx)
     return elems[idx];
 }
 
-void CTable::swap(const unsigned int &idx1, const unsigned int &idx2)
+void CTable::swap(const unsigned int idx1, const unsigned int idx2)
 {
     if(idx1>=this->n || idx2>=this->n)
         return;
@@ -75,44 +75,83 @@ int CTable::partition(int limi, int lims)
     //at the begining there is no element lower than x so i = pivot+1
     int i = limi;
 
-    cout<<x<<endl;
-
     for(int j = i+1; j<lims; j++)
     {
-        cout<<"["<<i<<","<<j<<"]"<<endl;
         if(elems[j] < x)
         {
-            cout<<"***["<<elems[i+1]<<","<<elems[j]<<"]"<<endl;
             swap(i+1, j);
-            display();
             i++;
         }
     }
 
-    cout<<(i+1)<<endl;
     return i;
 }
 
 
 void CTable::quickSort(int limi, int lims)
 {
-    cout<<"---------------------("<<limi<<","<<lims<<")"<<endl;
-
     if(limi<0 || lims>n || (lims-limi)<=1)
         return;
 
     int pivot = limi, newpivot;
 
     newpivot = partition(pivot, lims);
-
-    cout<<"--> newp["<<newpivot<<"] = "<<elems[newpivot]<<endl;
-    cout<<".."<<limi<<","<<(newpivot)<<endl;
-    cout<<".."<<(newpivot+1)<<","<<lims<<endl;
-
     swap(pivot, newpivot);
-    display();
 
     quickSort(limi, newpivot);
     quickSort(newpivot+1, lims);
+}
+
+void CTable::selectionSort()
+{
+     unsigned int smallest_idx;
+     int smallest;
+
+     for(unsigned int i=0; i<n; i++)
+     {
+         smallest_idx = i;
+         smallest = elems[smallest_idx];
+
+         for(unsigned int j=i+1; j<n; j++)
+         {
+             if(elems[j] < smallest)
+             {
+                smallest = elems[j];
+                smallest_idx = j;
+             }
+         }
+
+         swap(i, smallest_idx);
+     }
+}
+
+void CTable::insertSort()
+{
+    //If it has zero or one element is already sorted
+    if(n<=1) return;
+
+    //The pointer to the unorganized part is given by the variable i [1..n]
+    //For each i we need to find its right place in the organized part [0..i]
+    //of the array to insert it there.
+    for(unsigned int i=1; i<n; i++)
+    {
+        for(unsigned int j=0; j<i; j++)
+        {
+            if(elems[i] <= elems[j])
+            {
+                insert(i, j);
+                break;
+            }
+        }
+    }
+}
+
+ostream &operator <<(ostream &os, const CTable &ctable)
+{
+    for(unsigned int i=0; i<ctable.n; i++)
+        os<<ctable.elems[i]<<" ";
+    os<<endl;
+
+    return os;
 }
 

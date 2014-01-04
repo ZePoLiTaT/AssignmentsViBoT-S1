@@ -30,10 +30,10 @@ Point2D::Point2D(float px, float py)
     setY(py);
 }
 
-Point2D::Point2D(Point2D &p)
+Point2D::Point2D(const Point2D &p)
 {
-    setX(p.x);
-    setY(p.y);
+    this->setX(p.x);
+    this->setY(p.y);
 }
 
 void Point2D::askvalue()
@@ -44,7 +44,7 @@ void Point2D::askvalue()
 
 void Point2D::display()
 {
-    cout<<x<<", "<<y<<endl;
+    cout<<(*this);
 }
 
 
@@ -54,9 +54,16 @@ void Point2D::setXY(const float *px, const float *py)
     this->y = *py;
 }
 
+Point2D &Point2D::operator= (const Point2D &assignP)
+{
+    this->x = assignP.x;
+    this->y = assignP.y;
+
+    return *this;
+}
 
 ostream &operator<<(ostream &os, const Point2D &p)
 {
-    os << "(" << p.x << " , " << p.y << ")"<<endl;
+    os << "(" << p.x << " , " << p.y << ") P["<<p.prev<<"] N["<<p.next<<"]"<<endl;
     return os;
 }

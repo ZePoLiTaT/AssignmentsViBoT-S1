@@ -44,9 +44,9 @@ end
 
 minY = fun(b);
 minX = b;
-figure
-plot(x,y)
-hold on
-plot(minX,minY,'og')
-hold off
+% figure
+% plot(x,y)
+% hold on
+% plot(minX,minY,'og')
+% hold off
 

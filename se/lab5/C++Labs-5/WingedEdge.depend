@@ -2,8 +2,12 @@
 1255017325 source:c:\yohan\mscv\c++\labs\wingededge\wingededge.cpp
 	"WingedEdge.h"
 
+1255020926 e.h"
+
 1255018451 c:\yohan\mscv\c++\labs\wingededge\wingededge.h
 	<iostream>
+
+1255021250 
 
 1255017648 source:c:\yohan\mscv\c++\labs\wingededge\exercice.cpp
 	"Exercice.h"
@@ -17,6 +21,8 @@
 	<iostream>
 	"WingedEdge.h"
 	"Exercice.h"
+
+1255021874 h"
 
 1255020926 source:c:\yohan\mscv\c++\labs\c++labs-5\c++labs-5\wingededge.cpp
 	"WingedEdge.h"
@@ -36,4 +42,38 @@
 1255021250 source:c:\yohan\mscv\c++\labs\c++labs-5\c++labs-5\exercice.cpp
 	"Exercice.h"
 	<iostream>
+
+1255021250 source:/home/zepolitat/Documents/se-labs/lab5/C++Labs-5/Exercice.cpp
+	"Exercice.h"
+	<iostream>
+
+1385392742 /home/zepolitat/Documents/se-labs/lab5/C++Labs-5/Exercice.h
+	"WingedEdge.h"
+	<iostream>
+
+1385392791 /home/zepolitat/Documents/se-labs/lab5/C++Labs-5/WingedEdge.h
+	<iostream>
+
+1255020926 source:/home/zepolitat/Documents/se-labs/lab5/C++Labs-5/WingedEdge.cpp
+	"WingedEdge.h"
+
+1385392494 source:/home/zepolitat/Documents/se-labs/lab5/C++Labs-5/main.cpp
+	<iostream>
+	"WingedEdge.h"
+	"Exercice.h"
+	<stdlib.h>
+
+1255021250 source:/mnt/hgfs/vibot8-1/se/lab5/C++Labs-5/Exercice.cpp
+	"Exercice.h"
+	<iostream>
+
+1385392742 /mnt/hgfs/vibot8-1/se/lab5/C++Labs-5/Exercice.h
+	"WingedEdge.h"
+	<iostream>
+
+1385502232 /mnt/hgfs/vibot8-1/se/lab5/C++Labs-5/WingedEdge.h
+	<iostream>
+
+1385392786 source:/mnt/hgfs/vibot8-1/se/lab5/C++Labs-5/WingedEdge.cpp
+	"WingedEdge.h"
 

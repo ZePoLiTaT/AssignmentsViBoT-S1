@@ -9,26 +9,46 @@ Tree::Tree()
     root = NULL;
 }
 
-void Tree::insert(TreeNode *node)
+Tree::~Tree()
 {
-    int lexcomp;
+    deleteRec(root);
+}
+
+void Tree::deleteRec(TreeNode* curr)
+{
+    if(curr==NULL)
+        return;
+
+    deleteRec(curr->left);
+    deleteRec(curr->right);
+    cout<<"Deleting "<<*curr<<endl;
+    delete curr;
+}
+
+void Tree::insert(TreeNode *insertNode)
+{
+    //If there is no root, then set root to current insert node
     if(root==NULL)
     {
-        root = node;
+        root = insertNode;
         return;
     }
 
     TreeNode *curr = root;
+    int lexcomp;
 
-
+    //Otherwise, find the correct place to insert the element
     while(curr!=NULL)
     {
-        lexcomp = node->word.compare(curr->word);
+        //Take into account the lexical comparation of
+        //the insertNode and the current node of the tree that is being evaluated
+        lexcomp = insertNode->word.compare(curr->word);
+
         if(lexcomp<0)
         {
             if(curr->left == NULL)
             {
-                curr->left = node;
+                curr->left = insertNode;
                 curr = NULL;
             }
             else
@@ -38,12 +58,14 @@ void Tree::insert(TreeNode *node)
         {
             if(curr->right == NULL)
             {
-                curr->right = node;
+                curr->right = insertNode;
                 curr = NULL;
             }
             else
                 curr = curr->right;
         }
+        else
+            break;  //If other node is equal, then no insertion is performed!s
     }
 }
 
@@ -52,8 +74,8 @@ void Tree::inorder(TreeNode *curr)
     if(curr==NULL)
         return;
 
-    cout<<(curr->word)<<endl;
     inorder(curr->left);
+    cout<<*curr<<endl;
     inorder(curr->right);
 }
 
@@ -62,9 +84,9 @@ void Tree::preorder(TreeNode *curr)
     if(curr==NULL)
         return;
 
-    inorder(curr->left);
-    cout<<(curr->word)<<endl;
-    inorder(curr->right);
+    cout<<*curr<<endl;
+    preorder(curr->left);
+    preorder(curr->right);
 }
 
 void Tree::postorder(TreeNode *curr)
@@ -72,9 +94,9 @@ void Tree::postorder(TreeNode *curr)
     if(curr==NULL)
         return;
 
-    inorder(curr->left);
-    inorder(curr->right);
-    cout<<(curr->word)<<endl;
+    postorder(curr->left);
+    postorder(curr->right);
+    cout<<*curr<<endl;
 }
 
 void Tree::inorder()

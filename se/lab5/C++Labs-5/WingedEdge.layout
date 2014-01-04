@@ -2,18 +2,18 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="Exercice.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="1610" topLine="0" />
+		<Cursor position="410" topLine="134" />
 	</File>
 	<File name="Exercice.h" open="1" top="0" tabpos="5">
-		<Cursor position="1856" topLine="51" />
+		<Cursor position="582" topLine="12" />
 	</File>
 	<File name="WingedEdge.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="475" topLine="0" />
+		<Cursor position="475" topLine="6" />
 	</File>
 	<File name="WingedEdge.h" open="1" top="0" tabpos="2">
-		<Cursor position="2142" topLine="53" />
+		<Cursor position="78" topLine="0" />
 	</File>
 	<File name="main.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="667" topLine="6" />
+		<Cursor position="16864" topLine="522" />
 	</File>
 </CodeBlocks_layout_file>

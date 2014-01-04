@@ -8,34 +8,27 @@ int main()
 {
     Tree ztree;
     TreeNode* node;
+    string word="";
 
     unsigned short nwords;
-
-    char n[] = "n";
-    char z[] = "z";
-    char y[] = "y";
-
-    cout<<strcmp(z,n)<<endl;
-    cout<<strcmp(z,y)<<endl;
-
-    cout << "Please enter the number of words:" << endl;
+    cout << "How many words do you want to add to the dictionary?: " << endl;
     cin>>nwords;
 
     for(unsigned short i=0; i<nwords; i++)
     {
-        string word="";
+        cout<<"Enter the word to add to the dictionary: ";
         cin>>word;
 
         node = new TreeNode(word);
         ztree.insert(node);
     }
 
-    cout<<"************INORDER"<<endl;
-    ztree.inorder();
     cout<<"************PREORDER"<<endl;
     ztree.preorder();
     cout<<"************POSTORDER"<<endl;
     ztree.postorder();
+    cout<<"************INORDER"<<endl;
+    ztree.inorder();
 
     return 0;
 }

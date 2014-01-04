@@ -6,11 +6,256 @@
 \begin{document}
 \title{Infrared Imaging (Lab 2)}
 \date {\today}
-\author{Tatiana Lopez Guevara\\Klemen Istenic}
+\author{Klemen Istenic\\Tatiana Lopez G}
 %\author{Tatiana Lopez Guevara}
 \maketitle
 
+\section{Altair Software}
+In the first assignment of the lab we used the IR 
+camera to check if there is any defect on the electronic circuit 
+provided.  Our aim was to capture the circuit with IR camera 
+and observe if there is any increase in the temperature. This 
+would imply a possible defect.
+ 
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{0.45\linewidth}
+\includegraphics[width=1.0\textwidth,natwidth=100,natheight=100]{../results/klemen/CircuitBefore001.PNG}
+\end{minipage}
+\quad
+\begin{minipage}[b]{0.45\linewidth}
+\includegraphics[width=1.0\textwidth,natwidth=100,natheight=100]{../results/klemen/CircuitAfter001.PNG}
+\end{minipage}
+\caption{IR of circuit OFF and ON}
+\label{fig:p1}
+\end{figure}
 
-\bibliographystyle{plain}
-\bibliography{biblio}
+Figure \ref{fig:p1} shows the electrical circuit before and after we apply the 
+voltage. On the right photo we can clearly see that the temperature has 
+significantly increased in two spots indicating two defects.
+
+Because we did not 
+calibrate the camera before taking the measurements, we could not calculate 
+the temperatures, but instead we provided all informations in DL (
+digital level) units.
+
+With the provided software (Altair software) we also measured 
+mean digital level value  of both of the spots of defect, 
+as well as mean digital level of the whole circuit
+ (table \ref{tb:tb1}). 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+&Before &	After \\
+\hline
+Spot A – max DL	&	6846	&15755\\
+Spot B – max DL &	6810	&9983\\
+Mean DL of whole circuit &	6824	&6991\\
+\hline
+\end{tabular}
+\caption{Measurements Before and After (*DL - digital level)}
+\label{tb:tb1}
+\end{table} 
+
+We also measured the profile before and after on the line 
+indicated on Figure \ref{fig:p1}. On the first graph (taken 
+before) we can see that the temperature is somehow constant, 
+with an exception of the middle part corresponding to the hole in 
+the middle of the circuit. The second graph on the right of 
+the figure (taken after
+) shows the huge increase of temperature on the defected spot, 
+showing as a spike on the graph. 
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{0.48\linewidth}
+\includegraphics[width=1.0\textwidth,natwidth=100,natheight=100]{../results/klemen/CircuitBeforeProfile.PNG}
+\end{minipage}
+\quad
+\begin{minipage}[b]{0.48\linewidth}
+\includegraphics[width=1.0\textwidth,natwidth=100,natheight=100]{../results/klemen/CircuitAfterProfile.PNG}
+\end{minipage}
+\caption{Profile Before and After}
+\label{fig:p1b}
+\end{figure}
+
+
+
+\section{Camera Calibration}
+
+
+For the calibration we used the hot plate where we gradually increased the 
+temperature and at the same time acquired the information with the IR camera.
+We measured the exact temperature of the hot plate using a digital thermometer
+and recorded the digital levels given by the Altair software (Table \ref{tb:calib}).
+
+In figure \ref{fig:calib} we plotted the results and the fitted "calibration" 
+line. We can see that the measurements are a little bit unstable which is due to the 
+high resolution of the camera which can record even small fluctuations in
+the environment. 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+$T^\circ$ & 31.6 & 39.4 & 45.8 & 49.7 & 55.1 & 59.3 & 65.1 \\
+DL& 8213 & 8615 & 8853 & 9329 & 9623 & 10067 & 10748 \\ 
+\hline
+\end{tabular}
+\caption{Calibration Measurements}
+\label{tb:calib}
+\end{table}
+
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{0.8\linewidth}
+\includegraphics[width=1.0\textwidth,natwidth=100,natheight=100]{../results/klemen/GraphCalibration.PNG}
+\end{minipage}
+\caption{Calibration plot}
+\label{fig:calib}
+\end{figure}
+The experiment could be better if we could control the  
+temperature of the hotplate electronically avoiding possible errors
+when measuring the temperature itself.
+
+\section{Coefficients Estimation}
+As we saw in class, the emissivity 
+can be defined as the ratio between the luminance of a real material and a black body.
+
+That is why, we first needed to take the measurement of the luminance of the black body.
+Since there is not such thing as a perfect black body, we had
+to approximate its value using a black paper. Table \ref{tb:tb2a} shows
+the obtained results.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Black velvet (DL) & 7053 \\
+Wood (DL) & 6947\\
+\hline
+Emissivity $\epsilon$ & 0.98497\\ 
+\hline
+\end{tabular}
+\caption{Wood Emissivity}
+\label{tb:tb2a}
+\end{table} 
+
+By definition, the transmission coefficient is the percentage 
+that gets through the object. Therefore, what we did was to take measurements
+from the black body, and then place the object in front and take the measurement
+again (Table \ref{tb:tb2b}). The ratio between them gave us the value for
+transmissivity.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Black velvet (DL)& 7071 \\
+PVC (DL) & 6937\\
+\hline
+Transmissivity $\tau$ & 0.981 \\ 
+\hline
+\end{tabular}
+\caption{PVC Transmissivity}
+\label{tb:tb2b}
+\end{table} 
+
+To calculate the reflection coefficient of the copper we should have 
+taken the measurements of the reflection of the black body from copper's surface.
+However, during our lab, instead of the black body we made a mistake
+and instead, we used one of our fingers because
+the reflection was clearly seen in the image and that deceived us. 
+While doing the report
+we realized that actually we should have used the black paper because it's emissivity
+coefficient is close to 1 in all directions and therefore the calculated
+value would have been correct.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{0.5\linewidth}
+\includegraphics[width=1.0\textwidth,natwidth=100,natheight=100]{../results/klemen/copper.PNG}
+\end{minipage}
+\caption{Reflection on the surface of the copper}
+\label{fig:calib}
+\end{figure}
+
+\section{Active Thermography}
+
+The idea of this section was to see the how an IR camera can 
+be applied in NDT or Non Destructive Thermography. A halogen lamp 
+connected to a sinusoidal voltage generator was used.
+
+\subsection{First Experiment}
+
+In this section we applied the principles of active thermography
+in order to analyze a painting. 
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{0.4\linewidth}
+\includegraphics[width=1.0\textwidth,natwidth=100,natheight=100]{../results/img/at1_middle2.PNG}
+\end{minipage}
+\quad
+\begin{minipage}[b]{0.4\linewidth}
+\includegraphics[width=1.0\textwidth,natwidth=100,natheight=100]{../results/img/at1_initial.PNG}
+\end{minipage}
+\caption{IR image after heating with halogen lamp connected to a sinusoidal generator}
+\label{fig:at1}
+\end{figure}
+
+With visual inspection of the IR image, we could not see a lot of details in the painting. 
+However, after heating it with the sinusoidal generator, we observed the
+shape of an elongated figure covering the middle part of the board which
+could not be seen before. A few seconds after stopping the heating
+source, we could notice that the abnormal layer of painting
+took more time to cool down which made it more clear revealing a humanoid
+figure and a ring (figure \ref{fig:at1}). This leads us to think 
+that such shape was part of a previous painting which then 
+was used as a canvas for the new painting.
+
+The principle here is, as we saw in class, that the defects, or in this 
+case the other layer of painting, take more time to cool down and therefore
+can be detected by the IR camera without destroying the object.
+
+\subsection{Second Experiment}
+
+Here we analyzed the flat-bottom-holes object provided. This structure
+was placed in front of the IR camera with the holes opposite to it.
+Initially the holes were not visible either by visual inspection
+nor by the IR camera.
+
+Then we started heating the object with the halogen lamp connected to
+the voltage generator to 1Hz. In this case, the holes from the left
+started to appear first. After some more time, all the holes were totally
+visible through the IR camera (figure \ref{fig:at2}).
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{0.7\linewidth}
+\includegraphics[width=1.0\textwidth,natwidth=100,natheight=100]{../results/img/holes001.PNG}
+\end{minipage}
+\caption{Flat-bottom-holes after heating}
+\label{fig:at2}
+\end{figure}
+
+The difference in time that took the holes to appear was because
+of the different depth of the holes. The holes that were deeper (on the left side)
+had less material in front of them, so it took less time to warm it 
+(the material).
+
+
+\subsection{Conclusions}
+As we could experience here, the principles of active thermography
+can be applied in a great variety of fields. In the first experiment
+we saw the application in the field of Art were IR NDT can be applied
+to identify fake paintings, reused canvas, deterioration detection, etc.
+In the second example, we saw the application in the field of 
+detecting thickness of materials, finding defects, etc. 
+
+% \bibliographystyle{plain}
+% \bibliography{biblio}
 \end{document}

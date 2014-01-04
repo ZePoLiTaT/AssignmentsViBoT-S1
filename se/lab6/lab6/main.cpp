@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ctable.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -13,13 +14,25 @@ int main()
     cout<<"********* Bubble Sort ***********"<<endl;
     table.display();
     table.bubbleSort();
-    table.display();
+    cout<<table;
 
     cout<<"********* Quick Sort ***********"<<endl;
     table.initialize();
-    table.display();
+    cout<<table;
     table.quickSort(0, n);
-    table.display();
+    cout<<table;
+
+    cout<<"********* Selection Sort ***********"<<endl;
+    table.initialize();
+    cout<<table;
+    table.selectionSort();
+    cout<<table;
+
+    cout<<"********* Insertion Sort ***********"<<endl;
+    table.initialize();
+    cout<<table;
+    table.insertSort();
+    cout<<table;
 
     return 0;
 }
